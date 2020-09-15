@@ -25,51 +25,57 @@ function startUp() {
     inquirer
         .prompt([
             {
-            name: 'name',
-            type: 'input',
-            message: 'What is your name? \n'
+                name: 'name',
+                type: 'input',
+                message: 'What is your name? \n'
             },
             {
-            name: 'id',
-            type: 'input',
-            message: 'What is ID? \n'
-            },      
-            {
-            name: 'email',
-            type: 'input',
-            message: 'What is your email? \n'
+                name: 'id',
+                type: 'input',
+                message: 'What is ID? \n'
             },
             {
-            name: 'officeNumber',
-            type: 'input',
-            message: 'What is this Managers Office Number? \n'
+                name: 'email',
+                type: 'input',
+                message: 'What is your email? \n'
+            },
+            {
+                name: 'officeNumber',
+                type: 'input',
+                message: 'What is this Managers Office Number? \n'
             }
-    ])
-    .then(function(answers) {
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-        employeeRoster.push(manager);
-        //console.log(employeeRoster);
-        generateNewEmployee();
-    })
+        ])
+        .then(function (answers) {
+            const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            employeeRoster.push(manager);
+            //console.log(employeeRoster);
+            generateNewEmployee();
+        })
 }
 
 function generateNewEmployee() {
     inquirer
         .prompt([
-        {
-        name: 'role',
-        type: 'list',
-        message: 'Select the role for the Employee:',
-        choices: [
-            "Manager",
-            "Engineer",
-            "Inturn",
-            "None"
-        ]
-        }
+            {
+                name: 'role',
+                type: 'list',
+                message: 'Select the role for the Employee:',
+                choices: [
+                    "Manager",
+                    "Engineer",
+                    "Inturn",
+                    "None"
+                ]
+            }
         ])
-
+    .then(function (answers) {
+        if (answers.role === "Manager") {
+            startUp();
+        }
+    })
 }
+
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
