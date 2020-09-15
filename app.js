@@ -16,6 +16,7 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+const employeeRoster = [];
 
 startUp();
 
@@ -45,7 +46,8 @@ function startUp() {
     ])
     .then(function(answers) {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-        console.log(manager);
+        employeeRoster.push(manager);
+        console.log(employeeRoster);
     })
 }
 // After the user has input all employees desired, call the `render` function (required
