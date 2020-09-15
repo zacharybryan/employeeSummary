@@ -4,7 +4,6 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-// const thenableWriteFile = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -13,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 const Choice = require("inquirer/lib/objects/choice");
 
 
+// const writeFile = util.promisify(fs.writeFile);
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -27,17 +27,17 @@ function startUp() {
             {
                 name: 'name',
                 type: 'input',
-                message: 'What is your name? \n'
+                message: 'What is this Managers name? \n'
             },
             {
                 name: 'id',
                 type: 'input',
-                message: 'What is ID? \n'
+                message: 'What is this Managers ID? \n'
             },
             {
                 name: 'email',
                 type: 'input',
-                message: 'What is your email? \n'
+                message: 'What is this Managers email? \n'
             },
             {
                 name: 'officeNumber',
@@ -71,11 +71,58 @@ function generateNewEmployee() {
     .then(function (answers) {
         if (answers.role === "Manager") {
             startUp();
+        } else if (answers.role === "Engineer") {
+            generateEngineer();
+
+        } else if (answers.role === "Inturn") {
+            generateInturn();
+        } else (answers.role === "None") {
+            console.log("All Team Members Entered. Now generating roster!")
         }
     })
 }
 
+function generateEngineer() {
+    inquirer
+        .prompt([
+            {
+                name: 'name',
+                type: 'input',
+                message: 'What is this Engineers name? \n'
+            },
+            {
+                name: 'id',
+                type: 'input',
+                message: 'What is this Engineers ID? \n'
+            },
+            {
+                name: 'email',
+                type: 'input',
+                message: 'What is this Engineers email? \n'
+            }
+        ])
+}
 
+function generateInturn() {
+    inquirer
+        .prompt([
+            {
+                name: 'name',
+                type: 'input',
+                message: 'What is this Inturns name? \n'
+            },
+            {
+                name: 'id',
+                type: 'input',
+                message: 'What is this Inturns ID? \n'
+            },
+            {
+                name: 'email',
+                type: 'input',
+                message: 'What is this Inturns email? \n'
+            }
+        ])
+}
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
