@@ -10,6 +10,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Choice = require("inquirer/lib/objects/choice");
 
 
 
@@ -47,8 +48,27 @@ function startUp() {
     .then(function(answers) {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         employeeRoster.push(manager);
-        console.log(employeeRoster);
+        //console.log(employeeRoster);
+        generateNewEmployee();
     })
+}
+
+function generateNewEmployee() {
+    inquirer
+        .prompt([
+        {
+        name: 'role',
+        type: 'list',
+        message: 'Select the role for the Employee:',
+        choices: [
+            "Manager",
+            "Engineer",
+            "Inturn",
+            "None"
+        ]
+        }
+        ])
+
 }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
