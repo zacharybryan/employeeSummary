@@ -1,8 +1,8 @@
 const Employee = require("../lib/Employee");
 
 describe("Can instantiate Employee instance", () => {
-  describe("is employee and object method", () => {
-   it.only('creates an employee object', () => {
+  describe("is employee an object method", () => {
+  it.only('creates an employee object', () => {
 
     const e = new Employee();
     expect(typeof(e)).toBe("object");
