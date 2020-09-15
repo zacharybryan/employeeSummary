@@ -43,6 +43,10 @@ function startUp() {
             message: 'What is this Managers Office Number? \n'
             }
     ])
+    .then(function(answers) {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        console.log(manager);
+    })
 }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
