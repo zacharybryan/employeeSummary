@@ -13,11 +13,14 @@ describe("Can instantiate Employee instance", () => {
   
 
 
-// test("Can set name via constructor arguments", () => {
-//   const name = "Alice";
-//   const e = new Employee(name);
-//   expect(e.name).toBe(name);
-// });
+describe("Can set name via constructor arguments", () => {
+  it.only("Sets the Employee's name", () =>{
+    const name = "Alice";
+    const e = new Employee(name);
+    expect(e.name).toBe(name);
+  })
+
+});
 
 // test("Can set id via constructor argument", () => {
 //   const testValue = 100;
