@@ -1,36 +1,50 @@
 const Employee = require("../lib/Employee");
 
-describe("Can instantiate Employee instance", () => {
-  describe("is employee an object method", () => {
-  it('creates an employee object', () => {
+// describe("Can instantiate Employee instance", () => {
+//   describe("is employee an object method", () => {
+//   it('creates an employee object', () => {
 
-    const e = new Employee();
-    expect(typeof(e)).toBe("object");
+//     const e = new Employee();
+//     expect(typeof(e)).toBe("object");
 
-    });
-  });
-});
-  
-
-
-describe("Can set name via constructor arguments", () => {
-  it("Sets the Employee's name", () => {
-    const name = "Alice";
-    const e = new Employee(name);
-    expect(e.name).toBe(name);
-  });
-
+//     });
+//   });
+// });
+test("Can instantiate Employee instance", () => {
+  const e = new Employee();
+  expect(typeof(e)).toBe("object");
 });
 
-describe("Can set id via constructor argument", () => {
-  it("Sets Employee's ID", () => {
-    const testValue = 100;
-    const e = new Employee("Foo", testValue);
-    expect(e.id).toBe(testValue);
 
-  });
+// describe("Can set name via constructor arguments", () => {
+//   it("Sets the Employee's name", () => {
+//     const name = "Alice";
+//     const e = new Employee(name);
+//     expect(e.name).toBe(name);
+//   });
+
+// });
+
+test("Can set name via constructor arguments", () => {
+  const name = "Alice";
+  const e = new Employee(name);
+  expect(e.name).toBe(name);
 });
 
+// describe("Can set id via constructor argument", () => {
+//   it("Sets Employee's ID", () => {
+//     const testValue = 100;
+//     const e = new Employee("Foo", testValue);
+//     expect(e.id).toBe(testValue);
+
+//   });
+// });
+
+test("Can set id via constructor argument", () => {
+  const testValue = 100;
+  const e = new Employee("Foo", testValue);
+  expect(e.id).toBe(testValue);
+});
 
 test("Can set email via constructor argument", () => {
   const testValue = "test@test.com";
