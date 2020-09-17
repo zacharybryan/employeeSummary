@@ -17,7 +17,7 @@ const Choice = require("inquirer/lib/objects/choice");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const employeeRoster = [];
+const employees = [];
 
 startUp();
 
@@ -47,8 +47,8 @@ function startUp() {
         ])
         .then(function (answers) {
             const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-            employeeRoster.push(manager);
-            console.log(employeeRoster);
+            employees.push(manager);
+            console.log(employees);
             generateNewEmployee();
         })
 }
@@ -78,9 +78,25 @@ function generateNewEmployee() {
             generateInturn();
         } else  {
             console.log("All Team Members Entered. Now generating roster!");
+            let data = render(employees);
+            fs.writeFile(outputPath, data, (err) => {
+                if (err) throw err;
+            })
+            }
         }
-    })
+    )
 }
+
+        // async function generateHtml() {
+//     try {
+//         const html = render(employees);
+//         await fs.writeFileAsync(outputPath, html);
+//         console.log("Successfully written HTML page!")
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
 
 function generateEngineer() {
     inquirer
@@ -103,8 +119,8 @@ function generateEngineer() {
         ])
         .then(function (answers) {
             const engineer = new Engineer(answers.name, answers.id, answers.email);
-            employeeRoster.push(engineer);
-            console.log(employeeRoster);
+            employees.push(engineer);
+            console.log(employees);
             generateNewEmployee();
         })
 }
@@ -129,13 +145,25 @@ function generateInturn() {
             }
         ])
         .then(function (answers) {
-            const inturn = new Inturn(answers.name, answers.id, answers.email);
-            employeeRoster.push(inturn);
-            console.log(employeeRoster);
+            const inturn = new Intern(answers.name, answers.id, answers.email);
+            employees.push(inturn);
+            console.log(employees);
             generateNewEmployee();
         
         })
 }
+
+// async function generateHtml() {
+//     try {
+//         const html = render(employees);
+//         await fs.writeFileAsync(outputPath, html);
+//         console.log("Successfully written HTML page!")
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
