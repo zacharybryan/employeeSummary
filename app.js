@@ -48,7 +48,7 @@ function startUp() {
         .then(function (answers) {
             const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
             employeeRoster.push(manager);
-            //console.log(employeeRoster);
+            console.log(employeeRoster);
             generateNewEmployee();
         })
 }
@@ -76,8 +76,8 @@ function generateNewEmployee() {
 
         } else if (answers.role === "Inturn") {
             generateInturn();
-        } else (answers.role === "None") {
-            console.log("All Team Members Entered. Now generating roster!")
+        } else  {
+            console.log("All Team Members Entered. Now generating roster!");
         }
     })
 }
@@ -101,6 +101,12 @@ function generateEngineer() {
                 message: 'What is this Engineers email? \n'
             }
         ])
+        .then(function (answers) {
+            const engineer = new Engineer(answers.name, answers.id, answers.email);
+            employeeRoster.push(engineer);
+            console.log(employeeRoster);
+            generateNewEmployee();
+        })
 }
 
 function generateInturn() {
@@ -122,6 +128,13 @@ function generateInturn() {
                 message: 'What is this Inturns email? \n'
             }
         ])
+        .then(function (answers) {
+            const inturn = new Inturn(answers.name, answers.id, answers.email);
+            employeeRoster.push(inturn);
+            console.log(employeeRoster);
+            generateNewEmployee();
+        
+        })
 }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
