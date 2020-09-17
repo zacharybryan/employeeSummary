@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const Choice = require("inquirer/lib/objects/choice");
+const { type } = require("os");
 
 
 // const writeFile = util.promisify(fs.writeFile);
@@ -19,9 +20,32 @@ const Choice = require("inquirer/lib/objects/choice");
 // and to create objects for each team member (using the correct classes as blueprints!)
 const employees = [];
 
-startUp();
+startUp1();
 
-function startUp() {
+function startUp1() {
+    inquirer
+        .prompt([
+            {
+                name: 'isManager',
+                type: 'list',
+                message: 'Are you a manager?',
+                choices: [
+                    "Yes",
+                    "No"
+                ]
+            }])
+            
+        .then(function(answers) {
+            if (answers.isManager === "Yes"){
+                generateManager();
+            } else {
+                console.log("Must be manager to compute")
+            }
+        })
+}
+
+
+function generateManager() {
     inquirer
         .prompt([
             {
@@ -59,23 +83,23 @@ function generateNewEmployee() {
             {
                 name: 'role',
                 type: 'list',
-                message: 'Select the role for the Employee:',
+                message: 'Select the role for the Employee: ',
                 choices: [
                     "Manager",
                     "Engineer",
-                    "Inturn",
-                    "None"
+                    "Intern",
+                    "All are added. Generate Html"
                 ]
             }
         ])
     .then(function (answers) {
         if (answers.role === "Manager") {
-            startUp();
+            generateManager();
         } else if (answers.role === "Engineer") {
             generateEngineer();
 
-        } else if (answers.role === "Inturn") {
-            generateInturn();
+        } else if (answers.role === "Intern") {
+            generateIntern();
         } else  {
             console.log("All Team Members Entered. Now generating roster!");
             let data = render(employees);
@@ -119,23 +143,23 @@ function generateEngineer() {
         })
 }
 
-function generateInturn() {
+function generateIntern() {
     inquirer
         .prompt([
             {
                 name: 'name',
                 type: 'input',
-                message: 'What is this Inturns name? \n'
+                message: 'What is this Interns name? \n'
             },
             {
                 name: 'id',
                 type: 'input',
-                message: 'What is this Inturns ID? \n'
+                message: 'What is this Interns ID? \n'
             },
             {
                 name: 'email',
                 type: 'input',
-                message: 'What is this Inturns email? \n'
+                message: 'What is this Interns email? \n'
             },
             {
                 name: 'school',
@@ -144,8 +168,8 @@ function generateInturn() {
             }
         ])
         .then(function (answers) {
-            const inturn = new Intern(answers.name, answers.id, answers.email, answers.school);
-            employees.push(inturn);
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            employees.push(intern);
             //console.log(employees);
             generateNewEmployee();
         
