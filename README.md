@@ -3,7 +3,11 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 [Github link](https://github.com/zacharybryan/employeeSummary)
+
 ![screenshot of home screen](./assets/home-screen.png)
+
+![screenshot of final screen](./assets/completed-Html.jpg)
+
 
 ---
 ## Description
