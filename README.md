@@ -12,7 +12,7 @@
 ---
 ## Description
 
-Describe project here
+This is an application that creates a HTML page based on user input from the command line. The creator can enter each employee based on job type: Manager, Engineer, and Intern. After all the data has been entered a webpage will be created. This app was built with javascript. It uses node.js. 
 
 ---
 ### Table of Contents
