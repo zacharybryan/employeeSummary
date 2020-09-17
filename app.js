@@ -87,17 +87,6 @@ function generateNewEmployee() {
     )
 }
 
-        // async function generateHtml() {
-//     try {
-//         const html = render(employees);
-//         await fs.writeFileAsync(outputPath, html);
-//         console.log("Successfully written HTML page!")
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
-
-
 function generateEngineer() {
     inquirer
         .prompt([
@@ -115,10 +104,15 @@ function generateEngineer() {
                 name: 'email',
                 type: 'input',
                 message: 'What is this Engineers email? \n'
+            },
+            {
+                name: 'github',
+                type: 'input',
+                message: 'What is this Engineers Github? \n'
             }
         ])
         .then(function (answers) {
-            const engineer = new Engineer(answers.name, answers.id, answers.email);
+            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
             employees.push(engineer);
             console.log(employees);
             generateNewEmployee();
@@ -142,10 +136,15 @@ function generateInturn() {
                 name: 'email',
                 type: 'input',
                 message: 'What is this Inturns email? \n'
+            },
+            {
+                name: 'school',
+                type: 'input',
+                message: 'What is this Interns School? \n'
             }
         ])
         .then(function (answers) {
-            const inturn = new Intern(answers.name, answers.id, answers.email);
+            const inturn = new Intern(answers.name, answers.id, answers.email, answers.school);
             employees.push(inturn);
             console.log(employees);
             generateNewEmployee();
