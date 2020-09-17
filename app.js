@@ -101,11 +101,11 @@ function generateNewEmployee() {
         } else if (answers.role === "Intern") {
             generateIntern();
         } else  {
-            console.log("All Team Members Entered. Now generating roster!");
             let data = render(employees);
             fs.writeFile(outputPath, data, (err) => {
                 if (err) throw err;
             })
+            console.log("All Team Members Entered. Roster Generated!");
             }
         }
     )
