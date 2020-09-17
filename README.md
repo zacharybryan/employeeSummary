@@ -28,6 +28,13 @@ Drescribe project here
 ---
 ### Installation
 
+* Install Node.js if not currently installed on device [Node.j](https://nodejs.org/en/download/)
+* [Get clone from github](https://github.com/zacharybryan/employeeSummary)
+* Run git clone git@github.com:zacharybryan/employeeSummary.git from the command line
+* Run npm install from command line in employeeSummary file
+* To Start run node app.js in the command line
+
+
 [Watch the demo here!](./assets/demo.mp4)
 steps here
 
@@ -46,7 +53,9 @@ Watch the video below
 ---
 ### Tests
 
-test steps here add video 
+Watch the video below
+
+[![Test Video](./assets/test-demo-thumbnail.jpg)](https://www.youtube.com/watch?v=Db8MqoTbCg4 "Demo!")
 
 ---
 ### Questions
