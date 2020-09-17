@@ -28,7 +28,7 @@ function startUp1() {
             {
                 name: 'isManager',
                 type: 'list',
-                message: 'Are you a manager?',
+                message: 'Welcome to the Html generator. Are you a manager?',
                 choices: [
                     "Yes",
                     "No"
