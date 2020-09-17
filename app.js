@@ -7,10 +7,8 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
-const Choice = require("inquirer/lib/objects/choice");
-const { type } = require("os");
+
 
 
 // const writeFile = util.promisify(fs.writeFile);
@@ -39,9 +37,9 @@ function startUp1() {
             if (answers.isManager === "Yes"){
                 generateManager();
             } else {
-                console.log("Must be manager to compute")
+                console.log("Must be manager to compute");
             }
-        })
+        });
 }
 
 
@@ -74,7 +72,7 @@ function generateManager() {
             employees.push(manager);
             //console.log(employees);
             generateNewEmployee();
-        })
+        });
 }
 
 function generateNewEmployee() {
@@ -104,11 +102,10 @@ function generateNewEmployee() {
             let data = render(employees);
             fs.writeFile(outputPath, data, (err) => {
                 if (err) throw err;
-            })
+            });
             console.log("All Team Members Entered. Roster Generated!");
             }
-        }
-    )
+        });
 }
 
 function generateEngineer() {
@@ -140,7 +137,7 @@ function generateEngineer() {
             employees.push(engineer);
             //console.log(employees);
             generateNewEmployee();
-        })
+        });
 }
 
 function generateIntern() {
@@ -173,5 +170,5 @@ function generateIntern() {
             //console.log(employees);
             generateNewEmployee();
         
-        })
+        });
 }
